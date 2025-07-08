@@ -1,0 +1,14 @@
+{
+	"name": "QuickNote",
+	"version": "1.0.0",
+	"description": "A plain TypeScript browser extension.",
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc",
+		"start": "tsc --watch"
+	},
+	"devDependencies": {
+		"typescript": "^5.0.0",
+		"@types/chrome": "^0.0.254"
+	}
+}

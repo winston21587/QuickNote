@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "commonjs",
+		"outDir": "quicknote-extension/quicknote-extension/dist",
+		"rootDir": "quicknote-extension/quicknote-extension/src",
+		"strict": true,
+		"esModuleInterop": true
+	},
+	"include": ["quicknote-extension/quicknote-extension/src/**/*"]
+}
