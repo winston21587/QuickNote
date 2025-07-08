@@ -3,10 +3,10 @@ document.getElementById("save")?.addEventListener("click", async () => {
   const description = (document.getElementById("description") as HTMLTextAreaElement).value;
   const id = crypto.randomUUID();
 
-  const newNote = { id, title, description, createdAt: Date.now() };
+  const newNote: NoteProps = { id, title, description, createdAt: Date.now() };
 
   chrome.storage.local.get(["notes"], (result) => {
-    const notes = result.notes || [];
+    const notes = result.notes || [] as NoteProps[];
     notes.push(newNote);
     chrome.storage.local.set({ notes });
     alert("Note saved!");
