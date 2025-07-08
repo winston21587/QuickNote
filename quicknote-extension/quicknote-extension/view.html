@@ -3,10 +3,241 @@
 
   <head>
     <title>View Notes</title>
+    <style>
+      body {
+        padding: 20px;
+        margin: 0;
+        background: #1a1a1a;
+        color: #ffffff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        font-size: 16px;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 0 0 30px 0;
+        font-size: 28px;
+        color: #ffffff;
+      }
+
+      .container {
+        max-width: 550px;
+        margin: 0 auto;
+      }
+
+      .notification {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        background: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .notification.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .edit-form {
+        background: #444444;
+        border: 2px solid #666666;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .edit-form input,
+      .edit-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        background: #333333;
+        color: #ffffff;
+        border: 1px solid #555555;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      .edit-form textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .edit {
+        background: #0066cc;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .edit:hover {
+        background: #0088ff;
+        transform: translateY(-1px);
+      }
+
+      .save {
+        background: #4CAF50;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .save:hover {
+        background: #66bb6a;
+        transform: translateY(-1px);
+      }
+
+      .cancel {
+        background: #666666;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .cancel:hover {
+        background: #888888;
+        transform: translateY(-1px);
+      }
+
+
+
+      .note {
+        background: #333333;
+        border: 2px solid #555555;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      .note:hover {
+        border-color: #777777;
+        transform: translateY(-2px);
+      }
+
+      .note h3 {
+        margin: 0 0 10px 0;
+        color: #ffffff;
+        font-size: 20px;
+      }
+
+      .note p {
+        margin: 0 0 15px 0;
+        color: #cccccc;
+        line-height: 1.6;
+        max-height: 60px;
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.3s ease;
+        font-size: 16px;
+      }
+
+      .note .datetime {
+        font-size: 12px;
+        color: #888888;
+        margin: 10px 0;
+        font-style: italic;
+      }
+
+      .note p.expanded {
+        max-height: none;
+      }
+
+      .note p.truncated::after {
+        content: "...";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #333333;
+        padding-left: 4px;
+      }
+
+      .note p.truncated {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .expand-btn {
+        background: #0066cc;
+        color: #ffffff;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        margin-left: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .expand-btn:hover {
+        background: #0088ff;
+      }
+
+      .delete {
+        background: #cc3333;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .delete:hover {
+        background: #ff4444;
+        transform: translateY(-1px);
+      }
+
+      .empty-state {
+        text-align: center;
+        color: #888888;
+        font-style: italic;
+        margin-top: 50px;
+      }
+
+    </style>
   </head>
 
   <body>
-    <div id="notes"></div>
+    <div class="container">
+      <h1>View Notes</h1>
+      <div id="notes"></div>
+    </div>
+    <div id="notification" class="notification">Note updated successfully!</div>
     <script src="view.js"></script>
   </body>
 

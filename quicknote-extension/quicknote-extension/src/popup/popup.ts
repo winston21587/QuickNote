@@ -1,7 +1,17 @@
 document.getElementById("create")?.addEventListener("click", () => {
-  chrome.tabs.create({ url: "create.html" });
+  chrome.windows.create({ 
+    url: "create.html", 
+    type: "popup", 
+    width: 600, 
+    height: 500 
+  });
 });
 
 document.getElementById("view")?.addEventListener("click", () => {
-  chrome.tabs.create({ url: "view.html" });
+  chrome.windows.create({ 
+    url: "view.html", 
+    type: "popup", 
+    width: 600, 
+    height: 600 
+  });
 });
